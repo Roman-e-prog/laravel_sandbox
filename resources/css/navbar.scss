@@ -1,0 +1,46 @@
+
+@use './variables' as vars;
+// @use './breakpoints' as bp;
+.mainNav{
+     width:100%;
+     background: vars.$secondary-color;
+     height:100px;
+     display:flex;
+     align-items: center;
+     justify-content: space-between;
+}
+.logo{
+     width:130px;
+     height:100%;
+     padding-left: 20px;
+}
+.logoImg{
+     width:100%;
+     height:100%;
+}
+.menueList{
+     width:60%;
+     padding-right: 100px;
+     display:flex;
+     align-items: center;
+     justify-content: space-around;
+//        @include bp.respondTo(xmd){
+//         width:80%;
+//     }
+//        @include bp.respondTo(sm){
+//         padding-right:20px;
+//     }
+    
+}
+.menueItems{
+     margin-right: 10px;
+     font-size: 18px;
+}
+.menueItems a:hover{
+     color:vars.$element-color;
+}
+.logoutBtn{
+     background: vars.$element-color;
+     border:none;
+     color:vars.$secondary-color;
+}

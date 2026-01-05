@@ -1,0 +1,29 @@
+@use "sass:map";
+
+
+//industrial align 2026
+// xs: 480px, sm: 768px, md: 1024px, lg: 1280px, xl: 1440px, xxl: 1600px
+// Define breakpoints map
+$breakpoints: (
+  xxs: 400px,
+  xs: 480px,
+  sm: 768px,
+  s:850px,
+  xmd: 960px,
+  md: 1024px,
+  slg: 1100px,
+  lg: 1280px
+);
+
+// Create a mixin for media queries
+@mixin respondTo($breakpoint) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    $size: map.get($breakpoints, $breakpoint);
+
+    @media (max-width: $size) {
+      @content;
+    }
+  } @else {
+    @error "No value found for breakpoint: #{$breakpoint}";
+  }
+}

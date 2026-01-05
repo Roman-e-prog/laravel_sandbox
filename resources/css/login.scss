@@ -1,0 +1,54 @@
+@use './variables' as vars;
+@use './breakpoints.scss' as bp;
+.loginContainer{
+    width:100%;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.loginForm{
+    width:50%;
+    display: flex;
+    flex-direction: column;
+     @include bp.respondTo(sm){
+        width:80%;
+    }
+}
+.loginHeadline{
+    margin-left:200px;
+     @include bp.respondTo(sm){
+        margin-left:50px;
+    }
+}
+.formGroupL{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+}
+.label{
+    margin-bottom: 5px;
+}
+.input{
+    width:80%;
+    height:16px;
+}
+.forgottenWrapper{
+    margin-bottom: 20px;
+}
+.forgottenBtn{
+    margin: 10px;
+    text-decoration: underline;
+}
+.forgottenBtn:hover{
+    color:lightcyan;
+}
+.loginBtn{
+    width:200px;
+    margin-top: 10px;
+    padding:10px;
+    background:vars.$element-color;
+    color:vars.$secondary-color;
+    cursor: pointer;
+}

@@ -1,0 +1,52 @@
+@use './variables' as vars;
+@use './breakpoints.scss' as bp;
+
+.container-adminmessage{
+    width:100%;
+}
+.userswrapper{
+    width:100%;
+}
+.usersheader , .usermessagesHeader{
+    margin-left: 50px;
+}
+.userlist{
+    width:100%;
+}
+.userItem, .clickable, .userMessagesItem, .adminmessagesItem, .adminmessage{
+    width: 80%;
+    display:flex;
+    align-items:center;
+    cursor:pointer;
+    @include bp.respondTo(sm){
+        width:90%;
+        padding:10px;
+    }
+    @include bp.respondTo(xs){
+        width:100%;
+        padding:10px;
+        flex-direction: column;
+    }
+}
+.adminmessage{
+    cursor:none;
+}
+
+.adminmessagesItem{
+    display:flex;
+    align-items:center;
+}
+.tableItem, .update{
+    margin-left:20px;
+      @include bp.respondTo(xs){
+        margin-left:0px;
+    }
+}
+.update, .delete{
+    background:vars.$element-color;
+    color:vars.$secondary-color;
+    padding:10px;
+}
+.usermessageswrapper{
+    width:100%;
+}

@@ -1,0 +1,22 @@
+@use './variables' as vars;
+.forumtitle{
+    margin-left:50px;
+}
+.forumpostsform{
+    display: flex;
+    flex-direction: column;
+}
+.formGroup{
+     display: flex;
+    flex-direction: column;
+    padding:20px;
+    margin:10px;
+}
+
+.sendBtn{
+    margin: 20px;
+    background:vars.$secondary-color;
+    color: vars.$mainFont-color;
+    padding:10;
+    width:200px;
+}

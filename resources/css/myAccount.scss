@@ -1,0 +1,84 @@
+@use './variables' as vars;
+@use './breakpoints.scss' as bp;
+
+.container-account{
+    width:100%;
+}
+.welcome{
+    text-align: center;
+      @include bp.respondTo(sm){
+        font-size:30px;
+    }
+}
+.dataContainer{
+    width:100%;  
+}
+.fullWrapper{
+    width:100%;
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.myData{
+    width:50%;
+     margin-left:50px;
+    display: flex;
+    flex-direction: column;
+     @include bp.respondTo(sm){
+        width:80%;
+    }
+}
+.deleteWarning, .youHaveMessages, .youHavePosts{
+    width:45%;
+    padding:20px;
+    @include bp.respondTo(sm){
+        width:80%;
+    }
+}
+.editBtn{
+    width:200px;
+    padding:10px;
+    margin:5px;
+    background:vars.$element-color;
+    color:vars.$secondary-color;
+    cursor:pointer;
+}
+.warning{
+    font-size: 30px;
+    color:red;
+    margin-bottom: 10px;
+     @include bp.respondTo(sm){
+        font-size:20px;
+    }
+}
+.buttonWrapper{
+    width:80%;
+    display: flex;
+    align-items:center;
+    justify-content: space-around;
+}
+.deleteUserBtn{
+    width:200px;
+    min-height: 50px;
+    padding:10;
+    background:red;
+    color:vars.$mainFont-color;
+    cursor:pointer;
+}
+.messageBtn{
+    width:200px;
+    min-height: 50px;
+    padding:10;
+    margin:5px;
+    background:green;
+    color:vars.$mainFont-color;
+    cursor:pointer;
+}
+.backBtn{
+    width:200px;
+    min-height: 50px;
+    padding:10;
+    background:vars.$mainFont-color;
+    color:vars.$secondary-color;
+    cursor:pointer;
+}

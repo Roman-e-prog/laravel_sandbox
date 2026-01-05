@@ -1,0 +1,48 @@
+@use './_variables' as vars;
+@use './breakpoints.scss' as bp;
+.container-articles{
+    padding:20px;
+    display: flex;
+    flex-direction: column;
+}
+.article-title{
+    width:300px;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+}
+.formGroup{
+    width:80%;
+    display: flex;
+    flex-direction: column;
+    padding:10px;
+    margin: 10px auto;
+}
+.addBtn, .deleteBtn{
+    width:400px;
+    height:40px;
+    margin-top: 5px;
+    padding:10;
+    background:vars.$element-color;
+    color:vars.$secondary-color;
+    @include bp.respondTo(xs){
+        width:200px;
+    }
+}
+.sendBtn{
+    width:400px;
+    height:40px;
+    padding:10;
+    background:vars.$secondary-color;
+    color:vars.$mainFont-color;
+     @include bp.respondTo(xs){
+        width:200px;
+    }
+}
+.submitWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 100px;
+}

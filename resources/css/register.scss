@@ -1,0 +1,59 @@
+@use './variables' as vars;
+@use './breakpoints' as bp;
+.registerContainer{
+    width:100%;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.registerHeadline{
+    margin-left:150px;
+     @include bp.respondTo(sm){
+        margin-left:50px;
+    }
+}
+.hint{
+    margin-left:150px;
+     @include bp.respondTo(sm){
+        margin-left:50px;
+    }
+}
+.registerForm{
+    width:50%;
+    display: flex;
+    flex-direction: column;
+    @include bp.respondTo(sm){
+        width:80%;
+    }
+}
+.formGroupR{
+    width:100%;
+    display: flex;
+    flex-direction: column;
+}
+.label{
+    margin-bottom: 5px;
+}
+.input{
+    width:80%;
+    height:16px;
+}
+.redirect{
+    margin-bottom: 20px;
+}
+.redirectBtn{
+    margin: 10px;
+    text-decoration: underline;
+}
+.redirectBtn:hover{
+    color:lightcyan;
+}
+.registerBtn{
+    width:200px;
+    margin-top: 10px;
+    padding:10px;
+    background:vars.$element-color;
+    color:vars.$secondary-color;
+}
