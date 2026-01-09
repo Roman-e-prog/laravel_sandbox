@@ -65,6 +65,7 @@ public function showPostDetail($ressort, $id)
             'answers.children.reactions',  // nested answers + reactions
             'answers.children.children.reactions', // answers on answers on answers + reactions
     ])->where('ressort', $ressort)->findOrFail($id);
+    $post->increment('views');
     return view('forumposts.detail', compact('ressort', 'post'),[
         'ressort'=>$ressort,
         'post'=>$post,
@@ -80,17 +81,14 @@ public function edit($ressort, $id)
 //edit store
 public function update(Request $request, $ressort, $id)
 {
-    $path = null;
-    if ($request->hasFile('image')) {
-        $path = $request->file('image')->store('posts', 'public');
-    }
     $validated = $request->validate([
         'title' => 'required|string|max:255',
         'blog_post_body' => 'required|string',
-        'images_path'=> $path,
+        'images_path'=> 'nullable|string',
         'slug'=>'nullable|string',
     ]);
-
+    if ($request->hasFile('image')) { 
+        $validated['images_path'] = $request->file('image')->store('posts', 'public'); }
     $post = Post::where('ressort', $ressort)->findOrFail($id);
     $post->update($validated);
 
@@ -144,7 +142,7 @@ public function destroy($ressort, $id)
     $post = Post::where('ressort', $ressort)->findOrFail($id);
     $post->delete();
 
-    return redirect()->route('forumposts', $ressort)
+    return redirect()->route('forumposts.show', $ressort)
         ->with('status', 'Post deleted successfully!');
 }
 

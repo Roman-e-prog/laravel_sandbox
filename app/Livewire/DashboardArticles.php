@@ -52,11 +52,11 @@ class DashboardArticles extends Component
     $this->dispatch('finalize-submit'); }
 
     protected $rules = [ // validation
-        'title' => 'required|string',
-        'ressort' => 'required|string',
-        'unit' => 'required|string',
-        'description' => 'required|string',
-        'article_content' => 'required|array',
+        'title' => 'required|string|min:1',
+        'ressort' => 'required|string|min:1',
+        'unit' => 'required|string|min:1',
+        'description' => 'required|string|min:1',
+        'article_content' => 'required|array|min:1',
         'tasks' => 'nullable|array',
         'external_links' => 'nullable|array',
         'images.*.path' => 'nullable|image|max:1024',
@@ -65,6 +65,7 @@ class DashboardArticles extends Component
     ];
     public function mount() // on Mount I call loadArticles
     {
+        abort_unless(auth()->user()?->role === 'admin', 403);
         $this->loadArticles();
     }
 
@@ -109,7 +110,8 @@ class DashboardArticles extends Component
     public function createArticle()
     {
         try{
-        $this->validate();//runs automatically the rules
+            $this->validate();//runs automatically the rules
+         
         $article = Blogarticle::create([
             'title' => $this->title, 
             'ressort' => $this->ressort, 
@@ -172,7 +174,7 @@ class DashboardArticles extends Component
     public function updateArticle()
     {
         $this->validate();
-        dump($this, 'this');
+      
         $article = Blogarticle::findOrFail($this->editingArticleId);
 
         $article->update([

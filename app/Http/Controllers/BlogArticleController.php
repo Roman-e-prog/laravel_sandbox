@@ -21,6 +21,7 @@ class BlogArticleController extends Controller
         $article = BlogArticle::with([
             'images'
         ])->findOrFail($id);
+        $article->increment('views');
         return view('blogarticle.article_detail', 
         [ 'article' => $article, 
         'images' => $article->images, 
