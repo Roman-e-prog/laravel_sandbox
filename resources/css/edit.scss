@@ -1,0 +1,7 @@
+@use './breakpoints.scss' as bp;
+.edittitle{
+    margin-left: 50px;
+    @include bp.respondTo(xs){
+        font-size: 30px;
+    }
+}
