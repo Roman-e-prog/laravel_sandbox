@@ -60,7 +60,7 @@
                                 ? json_decode($answer->answer_body, true)
                                 : $answer->answer_body;
                         @endphp
-                        <x-quill-viewer :delta="$decoded" :id="$post->id" />
+                        <x-quill-viewer :delta="$decoded" :id="$answer->id" />
                         <div class="evaluationWrapper">
                             @auth
                                 @if((auth()->id() === $answer->user_id || auth()->user()->is_admin) && !$answer->has_answered)
@@ -77,7 +77,6 @@
                                 @endif
                             @endauth
                             <livewire:answer-likes :answer="$answer" />
-                            <x-carbon-view class="icons" title="Seen by: {{$post->views}}"/>
                                 <a href="{{ route('forumanswer.create', ['post' => $post->id, 'parent_id' => $answer->id]) }}" class="answer-link">
                                     <x-heroicon-s-arrow-left-start-on-rectangle class="icons" title="answer this post"/>
                                 </a>

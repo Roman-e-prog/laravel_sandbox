@@ -21,6 +21,7 @@ Route::get('/forum', [PagesController::class, 'forum']);
 Route::get('/forumposts', [PagesController::class, 'forumposts']);
 Route::get('/blogArticles', [BlogArticleController::class, 'showArticles']);
 Route::get('/dashboard', [PagesController::class, 'dashboard']);
+
 Route::get('/myAccount', [PagesController::class, 'myAccount']);
 //auth
 Route::get('/register', [PagesController::class, 'register']);

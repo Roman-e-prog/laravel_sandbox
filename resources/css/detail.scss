@@ -1,14 +1,14 @@
-@import './_variables';
+@use './_variables' as vars;
 .fieldWrapper{
     margin:10px auto;
     width: 80%;
     padding:10px;
-    border: 1px solid $mainFont-color;
+    border: 1px solid vars.$mainFont-color;
 }
 .evaluationWrapper{
     width: 100%;
     height:50px;
-    border-top: 1px solid $mainFont-color;
+    border-top: 1px solid vars.$mainFont-color;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -27,5 +27,5 @@
 }
 .icons{
     height:20px;
-    color:$mainFont-color;
+    color:vars.$mainFont-color;
 }

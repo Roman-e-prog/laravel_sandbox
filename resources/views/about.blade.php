@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="aboutText">
-            <p class="about">Roman Armin Rostock wurde im Ruhrgebiet geboren und lebt heute im Sauerland. Als gelernter Kaufmann entdeckte er durch eine Schulung zum Thema Online-Marketing den IT-Sektor als lohnenswertes Berufsfeld. In der Folge verschaffte er sich durch Schulungen, aber auch ein Selbststudium im Bereich der Programmiersprachen PHP und JavaScript die notwendigen Fähigkeiten um sich beruflich zu verändern. Heutzutage programmiert er erfolgreich Webseiten, Webshops, Mobilfunkapplikationen und Software as a Service Produkte. Nun möchte er anderen helfen, ebenfalls diese Fähigkeiten zu erlangen, um im IT-Sektor tätig zu werden.<br/>Er wünscht allen Nutzern dieses Blogs viel Freude und Vergnügen beim Lernen.  </p>
+            <p class="about">Roman Armin Rostock wurde im Ruhrgebiet geboren und lebt heute im Sauerland. Als gelernter Kaufmann entdeckte er durch eine Schulung zum Thema Online-Marketing den IT-Sektor als lohnenswertes Berufsfeld. In der Folge verschaffte er sich durch Schulungen, aber auch ein Selbststudium im Bereich der Programmiersprachen PHP und JavaScript, die notwendigen Fähigkeiten, um sich beruflich zu verändern. Heutzutage programmiert er erfolgreich Webseiten, Webshops, Mobilfunkapplikationen und Software as a Service Produkte. Nun möchte er anderen helfen, ebenfalls diese Fähigkeiten zu erlangen, um im IT-Sektor tätig zu werden.<br/>Er wünscht allen Nutzern dieses Blogs viel Freude und Vergnügen beim Lernen.  </p>
         </div>
     </div>
 @endsection

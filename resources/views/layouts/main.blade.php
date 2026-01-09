@@ -14,6 +14,7 @@
     @vite('resources/css/forum.scss')
     @vite('resources/css/myAccount.scss')
     @vite('resources/css/create.scss')
+    @vite('resources/css/edit.scss')
     @vite('resources/css/forumposts.scss')
     @vite('resources/css/postlikes.scss')
     @vite('resources/css/detail.scss')
