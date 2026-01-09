@@ -16,6 +16,7 @@ export default defineConfig({
                 'resources/css/forum.scss',
                 'resources/css/myAccount.scss',
                 'resources/css/create.scss',
+                'resources/css/edit.scss',
                 'resources/css/forumposts.scss',
                 'resources/css/postlikes.scss',
                 'resources/css/adminmessages.scss',
@@ -26,5 +27,6 @@ export default defineConfig({
             refresh: true,
         }),
         tailwindcss(),
+        
     ],
 });
