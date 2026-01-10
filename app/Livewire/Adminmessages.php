@@ -84,7 +84,6 @@ class Adminmessages extends Component
         'usermessage_id' =>$userMessageId
     ];
     $this->showAdminQuill = true;
-    dump($this->adressats, 'adressats');
 }
     
     public function createAdminmessage()
@@ -138,7 +137,6 @@ class Adminmessages extends Component
     {
         $this->validate();
         $message = Adminmessage::findOrFail($this->editingAdminmessageId);
-        dump($this, 'this');
         $message->update([
             'adminmessage' => json_encode($this->adminmessage),
         ]);

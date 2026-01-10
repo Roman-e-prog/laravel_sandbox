@@ -3,7 +3,6 @@
 use Tests\TestCase;
 use Pest\Laravel\{actingAs, get, post, put, delete};
 uses(TestCase::class)->in('Feature', 'Unit');
-dump('Pest.php loaded');
 
 beforeEach(function () {
     $manifestPath = public_path('build/manifest.json');
