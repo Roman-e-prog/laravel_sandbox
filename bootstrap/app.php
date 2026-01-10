@@ -22,5 +22,9 @@ return Application::configure(basePath: dirname(__DIR__))
     ;
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        //
+        $exceptions->render(function (Throwable $e, $request) { 
+            // Livewire requests should return JSON 
+            if ($request->header('X-Livewire')) { return response()->json([ 'message' => 'Something went wrong.' ], 500); } 
+            // Normal page requests get your fallback view 
+            return response()->view('errors.fallback', [], 500); });
     })->create();
