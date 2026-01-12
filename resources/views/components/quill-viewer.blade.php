@@ -14,10 +14,7 @@
 
     // Safe delta
     const delta = @json($delta ?? ['ops' => []]);
-    console.log('Quill exists:', typeof Quill !== 'undefined');
-console.log('Delta:', delta);
-console.log('Delta.ops exists:', delta && delta.ops);
-console.log('Viewer element:', document.querySelector('#viewer-{{ $id }}'));
+   
     // Initialize viewer
     const quill = new window.Quill('#viewer-{{ $id }}', {
         readOnly: true,

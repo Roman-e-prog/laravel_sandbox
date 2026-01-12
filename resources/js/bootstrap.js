@@ -28,7 +28,6 @@ if (!window.__quill_livewire_listener__) {
     window.__quill_livewire_listener__ = true;
 
     Livewire.on('quill-set-content', (data) => {
-        console.log("Received from Livewire:", typeof data, data);
         window.dispatchEvent(
             new CustomEvent('quill-set-content-global', { detail: data })
         );
@@ -45,12 +44,9 @@ window.quillEditor = function ({ field }) {
             const editorEl = this.$refs.editor;
 
             if (editorEl.__quill_initialized) {
-                console.log('Quill: already initialized for field', field);
                 return;
             }
             editorEl.__quill_initialized = true;
-
-            console.log('Quill: init for field', field);
 
             quillInstance = new Quill(editorEl, {
                 theme: 'snow',
@@ -59,14 +55,12 @@ window.quillEditor = function ({ field }) {
                 },
             });
 
-            console.log('Quill: instance created', quillInstance);
 
             // Livewire → Quill
             window.addEventListener('quill-set-content-global', (e) => {
                 const data = e.detail;
                 if (data.field !== field) return;
 
-                console.log('Browser → Quill: applying content', data.value);
                 applyContent(data.value);
             });
 
@@ -76,7 +70,6 @@ window.quillEditor = function ({ field }) {
                 if (!quillInstance) return;
 
                 const delta = quillInstance.getContents();
-                console.log('Quill → LW: sending content', delta);
 
                 Livewire.dispatch('quill-content', {
                     field,
@@ -105,13 +98,11 @@ window.quillEditor = function ({ field }) {
 
    function applyContent(value) {
     if (!quillInstance) {
-        console.warn('applyContent: no Quill instance yet');
         return;
     }
 
     // CASE 1: Already a Delta object (array with ops)
     if (value && typeof value === 'object' && Array.isArray(value.ops)) {
-        console.log('applyContent: received Delta object', value);
         quillInstance.setContents(value);
         return;
     }
@@ -122,22 +113,18 @@ window.quillEditor = function ({ field }) {
         try {
             parsed = JSON.parse(value);
         } catch (e) {
-            console.error('applyContent: invalid JSON', e, value);
             return;
         }
 
         if (parsed && typeof parsed === 'object' && Array.isArray(parsed.ops)) {
-            console.log('applyContent: parsed JSON Delta', parsed);
             quillInstance.setContents(parsed);
             return;
         }
 
-        console.error('applyContent: parsed JSON but invalid Delta shape', parsed);
         return;
     }
 
     // CASE 3: Empty or invalid → clear editor
-    console.log('applyContent: empty or unsupported value, clearing editor', value);
     quillInstance.setContents([]);
 }
 
