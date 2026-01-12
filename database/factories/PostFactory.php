@@ -1,8 +1,8 @@
 <?php
 namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\models\Post;
-use App\models\User;
+use App\Models\Post;
+use App\Models\User;
 class PostFactory extends Factory
 {
     protected $model = \App\Models\Post::class;

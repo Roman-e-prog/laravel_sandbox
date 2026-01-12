@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\User;
+use App\Models\Usermessage;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Adminmessage>
  */
@@ -16,9 +17,11 @@ class AdminmessageFactory extends Factory
      */
     public function definition(): array
     {
+         $user = User::factory()->create(['role'=>'admin']);
+         $usermessage = Usermessage::factory()->create();
         return [
-            'user_id' => User::factory(),
-            'adminname' => $this->faker->userName(),
+            'user_id' => $user->id,
+            'adminname' => $user->username,
             'adminmessage' => json_encode([
                     'ops' => [
                         ['insert' => $this->faker->paragraph() . "\n"],
@@ -26,9 +29,9 @@ class AdminmessageFactory extends Factory
                 ]),
             'published_at' => now(),
             'has_answered'=>false,
-            'questioner_name'=> $this->faker->userName(),
-            'questioner_id'=>$this->faker->randomElement(['1', '2']),
-            'usermessage_id'=>$this->faker->randomElement(['1', '2']),
+            'questioner_name'=>$usermessage->username,
+            'questioner_id'=>$usermessage->user_id,
+            'usermessage_id'=>$usermessage->id,
         ];
     }
 }

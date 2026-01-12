@@ -1,31 +1,26 @@
 <?php
-
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\User;
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Usermessage>
- */
+use App\Models\Usermessage;
+
 class UsermessageFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
     public function definition(): array
     {
         return [
             'user_id' => User::factory(),
-            'username' => $this->faker->userName(),
+            'username' => function (array $attributes) {
+                return User::find($attributes['user_id'])->username;
+            },
             'usermessage' => json_encode([
-                    'ops' => [
-                        ['insert' => $this->faker->paragraph() . "\n"],
-                    ],
-                ]),
-            'is_answered' => false,
+                'ops' => [
+                    ['insert' => $this->faker->paragraph() . "\n"],
+                ],
+            ]),
             'published_at' => now(),
+            'is_answered' => false,
         ];
     }
 }

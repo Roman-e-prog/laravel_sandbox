@@ -7,21 +7,21 @@
     <div class="createBtnWrapper">
         @auth
             <a href="{{ route('forumposts.create', ['ressort' => $ressort]) }}" class="createBtn">
-                Create a Forumpost
+                Neuer Forumpost
             </a>
         @endauth
 
         @guest
             <button type="button" class="createBtn" onclick="showLoginToast()">
-                Create a Forumpost
+                Neuer Forumpost
             </button>
         @endguest
     </div>
     @foreach($posts as $post)
                 <div class="fieldWrapper">
                     <a href="{{route('forumposts.detail', ['ressort'=>$ressort, 'id'=>$post->id])}}" class="link">
-                        <h4> A post from: {{$post->username}}</h4>
-                        <h4>Posted at {{$post->published_at->format('d.m.Y H:i')}}</h4>
+                        <h4> Ein Post von: {{$post->username}}</h4>
+                        <h4> Am: {{$post->published_at->format('d.m.Y H:i')}}</h4>
                         <h3>{{ $post->title }}</h3>
                         <img src="{{ Storage::url($post->images_path) }}" alt="{{$post->title}}" class="postImage">
                         @php

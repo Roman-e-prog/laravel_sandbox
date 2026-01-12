@@ -28,7 +28,7 @@ class Adminmessages extends Component
     }
 }
     protected $rules = [
-        'adminmessage'=>'array|required'
+        'adminmessage'=>'string|required'
     ];
 
     protected $listeners = [ 
@@ -36,15 +36,11 @@ class Adminmessages extends Component
         'finalize-submit' => 'finalizeSubmit', ];
 
     public function setQuillContent($field, $value)
-{
-    if (!$field) return;
-    $decoded = json_decode($value, true);
-    if ($decoded === null) {
-        $decoded = ['ops' => [['insert' => "\n"]]];
-    }
+        {
+            if (!$field) return;
+            $this->$field = $value;   // store raw JSON string
 
-    $this->$field = $decoded;
-}
+        }
 
     // Ask browser for the quill content
     public function submitForm() { // Ask browser for quill content 
@@ -69,7 +65,7 @@ class Adminmessages extends Component
         $this->getAllAdminmessages();
     }
 
-    public function setUser($userId, $username, $userMessageId)
+    public function setUser($userId, $username, $userMessageId = null)
 {
     // Prevent duplicates
     foreach ($this->adressats as $a) {
@@ -81,7 +77,7 @@ class Adminmessages extends Component
     $this->adressats[] = [
         'userId' => $userId,
         'username' => $username,
-        'usermessage_id' =>$userMessageId
+        'usermessage_id' =>$userMessageId,
     ];
     $this->showAdminQuill = true;
 }
@@ -109,7 +105,9 @@ class Adminmessages extends Component
         return;
     }
     $this->dispatch('toast', message:'Adminmessage was successfully created', type:'success');
-    $this->updateUsermessage($recipient['usermessage_id']);
+    if($recipient['usermessage_id']){
+        $this->updateUsermessage($recipient['usermessage_id']);
+    }
     $this->resetForm(); 
     $this->adressats = []; 
     $this->showAdminQuill = false;
@@ -138,7 +136,7 @@ class Adminmessages extends Component
         $this->validate();
         $message = Adminmessage::findOrFail($this->editingAdminmessageId);
         $message->update([
-            'adminmessage' => json_encode($this->adminmessage),
+            'adminmessage' =>$this->adminmessage,
         ]);
 
         $this->resetForm();

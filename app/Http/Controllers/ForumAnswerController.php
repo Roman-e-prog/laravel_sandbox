@@ -34,7 +34,7 @@ public function store(Request $request, Post $post)
         'is_admin'=> auth()->user()->role === 'admin' ? true : false,
     ]);
      if ($request->expectsJson()) {
-        return response()->json($post, 201);
+        return response()->json($postanswer, 201);
     }
 
     return redirect()

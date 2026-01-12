@@ -90,7 +90,13 @@ window.quillEditor = function ({ field }) {
                         if (!quillInstance) return;
 
                         const delta = quillInstance.getContents();
-                        document.getElementById(field).value = JSON.stringify(delta);
+                        const hidden = document.getElementById(field); 
+                        if (!hidden) {
+                                console.warn(`Hidden input #${field} not found`);
+                            }
+                        if (hidden) { 
+                            hidden.value = JSON.stringify(delta); 
+                        }
                     });
                 }
 

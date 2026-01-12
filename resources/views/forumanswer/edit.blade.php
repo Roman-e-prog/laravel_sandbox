@@ -10,7 +10,7 @@
     @method('put')
 
     <div class="formGroup">
-        <label class="label">Forum Answer</label>
+        <label class="label">Forum Antwort</label>
 
         @include('quill.container', ['field' => 'answer_body'])
 
@@ -18,7 +18,7 @@
         <input type="hidden" name="parent_id" value="{{ request('parent_id') }}">
     </div>
 
-    <button type="submit" class="sendBtn">Store</button>
+    <button type="submit" class="sendBtn">Speichern</button>
 
     {{-- Pre-fill Quill --}}
     <script>

@@ -44,4 +44,13 @@ a{
   width:100%;
 }
 .required::before { content: " * "; color: red; }
+.icons, .myIcons{
+    height:20px;
+    color:vars.$mainFont-color;
+    background: transparent !important;
+}
+.myIcons{
+  background: transparent !important;
+}
+
 

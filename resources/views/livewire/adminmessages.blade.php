@@ -4,7 +4,7 @@
     <ul class="userlist">
     @foreach ($users as $user)
         <li class="userItem">
-            <div class="clickable" wire:click="setUser({{ $user->id }}, '{{ $user->username }}')">
+            <div class="clickable" wire:click="setUser({{ $user->id }}, '{{ $user->username }}', null)">
             <p class="tableItem">{{$user->prename}}</p>
             <p class="tableItem">{{$user->lastname}}</p>
             <p class="tableItem">{{$user->username}}</p>
@@ -54,6 +54,7 @@
         <div class="submitWrapper">
             @if ($showAdminQuill)
                 @include('quill.container', ['field' => 'adminmessage'])
+                <input type="hidden" id="adminmessage" name="adminmessage" />
             @endif
             <button type="submit" class="sendBtn">{{ $formMode === 'create' ? 'Create' : 'Update' }}</button>
             @if($formMode === 'edit')

@@ -2,6 +2,10 @@
 .container-forum{
     width:100%;
 }
+.forumForm{
+    display: flex;
+    flex-direction: column;
+}
 .forumList{
     width:80%;
     margin: 20px auto;

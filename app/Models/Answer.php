@@ -21,6 +21,7 @@ class Answer extends Model
         'published_at',
         'created_at',
         'updated_at',
+        'parent_id',
     ];
     protected $casts = [
         'views' =>'integer',
@@ -29,6 +30,7 @@ class Answer extends Model
         'published_at' => 'datetime',
         'created_at' =>'datetime',
         'updated_at' =>'datetime',
+        'parent_id' => 'integer',
     ];
 
         public function post() {
@@ -49,10 +51,6 @@ class Answer extends Model
             return $this->reactions()->where('type', 'dislike');
         }
         
-            public function answers()
-        {
-            return $this->hasMany(Answer::class);
-        }
         //for nested relations so answers on answers I need to define parent and child
           public function parent()
             {

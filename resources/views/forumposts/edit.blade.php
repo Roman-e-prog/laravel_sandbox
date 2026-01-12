@@ -7,7 +7,7 @@
         @csrf
         @method('put')
         <div class="formGroup">
-            <label class="label required">Title</label>
+            <label class="label required">Titel</label>
             <input type="text" name="title" class="input" value="{{$post->title}}" required/>
         </div>
         <div class="formGroup">
@@ -17,7 +17,7 @@
         </div>
         @if ($post->images_path)
             <div class="formGroup">
-                <label class="label">Current Image</label>
+                <label class="label">Aktuelles Bild</label>
                 <img src="{{ asset('storage/' . $post->images_path) }}" 
                     alt="Current image" 
                     style="max-width: 200px; display:block; margin-bottom:10px;">
@@ -31,7 +31,7 @@
             <label class="label required">Slug</label>
             <input type="text" name="slug" class="input" value="{{$post->slug}}" required/>
         </div>
-        <button type="submit" class="sendBtn">Store</button>
+        <button type="submit" class="sendBtn">Speichern</button>
         <script>
             window.addEventListener('DOMContentLoaded', () => {
                 window.dispatchEvent(new CustomEvent('quill-set-content-global', {

@@ -2,9 +2,12 @@
 
 @section('content')
    <div class="singlePostWrapper">
+    <button onclick="history.back()" class="backBt">
+    Zurück
+</button>
     <div class="fieldWrapper">
-        <h4> A post from: {{$post->username}}</h4>
-        <h4>Posted at {{$post->published_at->format('d.m.Y H:i')}}</h4>
+        <h4> Ein Post von: {{$post->username}}</h4>
+        <h4> Am {{$post->published_at->format('d.m.Y H:i')}}</h4>
         <h3>{{ $post->title }}</h3>
         <img src="{{ Storage::url($post->images_path) }}" alt="{{$post->title}}" class="postImage">
         @php
@@ -20,17 +23,21 @@
                     <a href="{{route('forumposts.edit', ['ressort'=>$post->ressort,'id'=>$post->id])}}" class="link" title="edit">
                         <x-ri-edit-line class="icons"/>
                     </a>
-                <form action="{{route('forumposts.destroy', ['ressort'=>$post->ressort,'id'=>$post->id])}}" class="form" method="POST">
+                <form action="{{route('forumposts.destroy', ['ressort'=>$post->ressort,'id'=>$post->id])}}" class="form" style="color:transparent" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit">
-                        <x-ri-delete-bin-2-line class="icons"/>
+                        <x-ri-delete-bin-2-line class="icons" style="color:black"/>
                     </button>
                 </form>
                 @endif
             @endauth
             <livewire:post-likes :post="$post" />
-            <x-heroicon-o-check-circle class="icons" title="Not answered yet"/>
+            @if($post->is_answered)
+                <x-heroicon-o-check-circle class="icons" style="color:green" title="Answered"/>
+            @else
+                <x-heroicon-o-check-circle class="icons" style="color:gray" title="Not answered yet"/>
+            @endif
             <x-carbon-view class="icons" title="Seen by: {{$post->views}}"/>
                 <a href="{{ route('forumanswer.create', $post->id) }}" class="answer-link">
                     <x-heroicon-s-arrow-left-start-on-rectangle class="icons" title="answer this post"/>
@@ -53,7 +60,7 @@
       
             @foreach ($post->answers as $answer)
                 <div class="fieldWrapper">
-                        <h4> Answer from: {{$answer->username}}</h4>
+                        <h4> Anwort von: {{$answer->username}}</h4>
                         <h4> @ {{$answer->questioner_name}}</h4>
                         @php
                             $decoded = is_string($answer->answer_body)
@@ -77,8 +84,9 @@
                                 @endif
                             @endauth
                             <livewire:answer-likes :answer="$answer" />
+                            <livewire:accept-answer-button :answer="$answer" :post="$post" />
                                 <a href="{{ route('forumanswer.create', ['post' => $post->id, 'parent_id' => $answer->id]) }}" class="answer-link">
-                                    <x-heroicon-s-arrow-left-start-on-rectangle class="icons" title="answer this post"/>
+                                    <x-heroicon-s-arrow-left-start-on-rectangle class="icons" title="answer this answer"/>
                                 </a>
                                 <script>
                                 document.querySelectorAll('.answer-link').forEach(link => {

@@ -17,6 +17,10 @@
     width:250px;
     height:auto;
 }
+.backBt {
+    background-color: vars.$element-color;
+    margin: 10px;
+}
 .link{
     width:50px;
     height:20px;
@@ -24,8 +28,4 @@
 .submitIconWrapper{
     background: none;
     border:none;
-}
-.icons{
-    height:20px;
-    color:vars.$mainFont-color;
 }
