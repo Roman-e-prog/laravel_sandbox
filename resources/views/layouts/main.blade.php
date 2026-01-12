@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laravel journey</title>
+    <meta name="keywords" content="Programmierblog Deutsch, Programmieren für Ältere, Roman Armin Rostock, Programmieren für Anfänger">
+    <title>Programmieren für Ü40</title>
     @vite('resources/css/app.scss')
     @vite('resources/css/navbar.scss')
     @vite('resources/css/mobile-navbar.scss')
