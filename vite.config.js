@@ -20,7 +20,7 @@ export default defineConfig({
                 'resources/css/forumposts.scss',
                 'resources/css/postlikes.scss',
                 'resources/css/adminmessages.scss',
-                'resources/css/details.scss',
+                'resources/css/detail.scss',
                 'resources/css/blogarticles.scss',
                 'resources/css/dashboard-articles.scss',
                 'resources/js/app.js',],
