@@ -44,4 +44,5 @@ COPY ./nginx.conf /etc/nginx/nginx.conf
 EXPOSE 8080
 
 # Start PHP-FPM + Nginx
-CMD service nginx start && php-fpm
+CMD php artisan migrate --force && service nginx start && php-fpm
+
