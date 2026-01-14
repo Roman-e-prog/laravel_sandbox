@@ -115,4 +115,10 @@ Route::prefix('myAccount')->name('myAccount.')->group(function () {
         ->name('showAllQuestions');
 
 });
+//for deploy migrations
+Route::get('/run-migrations', function () {
+    Artisan::call('migrate', ['--force' => true]);
+    return 'Migrations completed';
+});
+
 
