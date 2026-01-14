@@ -9,13 +9,10 @@
                     <p class="author">Von {{$article->author}}</p>
                     <p class="ressort">{{$article->ressort}}</p>
                     <p class="created_at">{{ $article->published_at->diffForHumans() }}</p>
-                    @php
-                        $back = url()->previous();
-                        if ($back === url()->current()) {
-                            $back = route('blogarticle.showArticles');
-                        }
-                    @endphp
-                    <a href="{{$back}}" class="sendBtn">Zurück</a>
+                    <div class="singlePostWrapper">
+                        <button onclick="history.back()" class="backBt">
+                        Zurück
+                    </button>
                     <hr class="underline">
                 </div>
                 <div class="articleContent">
