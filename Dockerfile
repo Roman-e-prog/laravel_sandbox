@@ -27,6 +27,7 @@ WORKDIR /var/www/html
 
 # Copy application code
 COPY . .
+RUN rm -rf public/build
 
 # Copy built assets from Stage 1
 COPY --from=build /app/public/build ./public/build
