@@ -8,7 +8,9 @@
                     <h1 class="single_headline">{{$article->title}}</h1>
                     <p class="author">Von {{$article->author}}</p>
                     <p class="ressort">{{$article->ressort}}</p>
-                    <p class="created_at">{{ $article->published_at->diffForHumans() }}</p>
+                     <p class="created_at">
+                        {{ optional($article->published_at)->diffForHumans() ?? 'Noch kein Datum' }}
+                    </p>
                     <div class="singlePostWrapper">
                         <button onclick="history.back()" class="backBt">
                         Zurück

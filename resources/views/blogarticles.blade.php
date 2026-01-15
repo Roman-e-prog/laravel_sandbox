@@ -7,10 +7,12 @@
         <a href="{{route('blogarticle.article_detail', ['id'=>$article->id])}}" class="articleDetail">
             <div class="fieldWrapper">
                 <div class="headWrapper">
-                    <h3 class="blog_headline">{{$article->title}}</h3>
-                    <p class="author">Von {{$article->author}}</p>
-                    <p class="ressort">{{$article->ressort}}</p>
-                    <p class="created_at">{{ $article->published_at->diffForHumans() }}</p>
+                    <h3 class="blog_headline">{{$article->title ?? ''}}</h3>
+                    <p class="author">Von {{$article->author ?? ''}}</p>
+                    <p class="ressort">{{$article->ressort ?? ''}}</p>
+                    <p class="created_at">
+                        {{ optional($article->published_at)->diffForHumans() ?? 'Noch kein Datum' }}
+                    </p>
                 </div>
             </div>
             </a>
