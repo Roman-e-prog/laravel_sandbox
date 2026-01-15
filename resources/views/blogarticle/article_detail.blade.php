@@ -44,8 +44,8 @@
                         <ul class="taskList">
                         @foreach ( $article->tasks as $task)
                             <li class="task">
-                                <p>{{ $task['task'] }}</p>
-                                <p>{{ $task['description'] }}</p>
+                                <p>{{ $task['task'] ?? '' }}</p>
+                                <p>{{ $task['description'] ?? '' }}</p>
                             </li>
                         @endforeach
                         </ul>
@@ -58,8 +58,8 @@
                         <ul class="linkList">
                         @foreach ( $article->external_links as $link)
                             <li class="task">
-                                <p>{{ $link['url'] }}</p>
-                                <p>{{ $link['label'] }}</p>
+                                <p>{{ $link['url'] ?? ''}}</p>
+                                <p>{{ $link['label'] ?? ''}}</p>
                             </li>
                         @endforeach
                         </ul>
