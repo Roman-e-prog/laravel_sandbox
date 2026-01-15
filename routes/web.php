@@ -10,7 +10,10 @@ use App\Http\Controllers\ForumAnswerController;
 use App\Http\Controllers\BlogArticleController;
 use App\Http\Controllers\DashboardArticleController;
 use App\Http\Controllers\UserController;
-
+//debugging
+use App\Models\Blogarticle; 
+use Illuminate\Support\Facades\DB; 
+use Illuminate\Support\Facades\Artisan;
 Route::get('/', [PagesController::class, 'home']);
 Route::get('/about', [PagesController::class, 'about']);
 //so übergebe ich Werte an eine Seite
@@ -121,9 +124,18 @@ Route::get('/run-migrations', function () {
     return 'Migrations completed';
 });
 //for debugging in web
-Route::get('/debug', function () {
-    return \App\Models\Blogarticle::count();
+Route::get('/debug', function () { try { return Blogarticle::count(); } catch (\Throwable $e) { return [ 'message' => $e->getMessage(), 'file' => $e->getFile(), 'line' => $e->getLine(), ]; } });
+Route::get('/debug-migrations', function () {
+    try {
+        return DB::table('migrations')->get();
+    } catch (\Throwable $e) {
+        return [
+            'message' => $e->getMessage(),
+            'file'    => $e->getFile(),
+            'line'    => $e->getLine(),
+        ];
+    }
 });
-Route::get('/debug-migrations', function () { return \DB::table('migrations')->get(); });
+
 
 
