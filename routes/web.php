@@ -120,5 +120,13 @@ Route::get('/run-migrations', function () {
     Artisan::call('migrate', ['--force' => true]);
     return 'Migrations completed';
 });
+//for debugging in web
+Route::get('/debug', function () {
+    return [
+        'articles' => \App\Models\Blogarticle::count(),
+        'categories' => \App\Models\Post::count(),
+    ];
+});
+Route::get('/debug-migrations', function () { return \DB::table('migrations')->get(); });
 
 
