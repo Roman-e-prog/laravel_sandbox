@@ -152,4 +152,34 @@ Route::get('/debug-blog', function () {
 Route::get('/debug-blog-schema', function () {
     return \Illuminate\Support\Facades\DB::select('SELECT column_name, data_type FROM information_schema.columns WHERE table_name = \'blogarticles\'');
 });
+Route::get('/debug-blogarticles-hard', function () {
+    return \App\Models\Blogarticle::all()->map(function ($a) {
+        return [
+            'id' => $a->id,
+            'title' => $a->title,
+            'author' => $a->author,
+            'ressort' => $a->ressort,
+            'published_at' => $a->published_at,
+            'published_at_type' => gettype($a->published_at),
+            'published_at_raw' => $a->getRawOriginal('published_at'),
+        ];
+    });
+});
+Route::get('/debug-blog-view', function () {
+    $articles = \App\Models\Blogarticle::all();
+    return view('blogarticles', ['articles' => $articles]);
+});
+Route::get('/debug-blog-one', function () {
+    return \App\Models\Blogarticle::first();
+});
+Route::get('/debug-blog-fake', function () {
+    $fake = new \App\Models\Blogarticle([
+        'title' => 'Test',
+        'author' => 'Test Author',
+        'ressort' => 'Test',
+        'published_at' => now(),
+    ]);
+
+    return view('blogarticles', ['articles' => collect([$fake])]);
+});
 
