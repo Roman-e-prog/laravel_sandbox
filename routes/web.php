@@ -136,6 +136,17 @@ Route::get('/debug-migrations', function () {
         ];
     }
 });
+Route::get('/debug-blog', function () {
+    try {
+        return \App\Models\Blogarticle::first();
+    } catch (\Throwable $e) {
+        return [
+            'message' => $e->getMessage(),
+            'file'    => $e->getFile(),
+            'line'    => $e->getLine(),
+        ];
+    }
+});
 
 
 
