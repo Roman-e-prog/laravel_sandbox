@@ -59,7 +59,7 @@
                         @foreach ( $article->external_links as $link)
                             <li class="task">
                                 <p>{{ $link['url'] }}</p>
-                                <p>{{ $task['label'] }}</p>
+                                <p>{{ $link['label'] }}</p>
                             </li>
                         @endforeach
                         </ul>
