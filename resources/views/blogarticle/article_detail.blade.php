@@ -5,9 +5,9 @@
         @if ($article)
             <div class="fieldWrapper">
                 <div class="headWrapper">
-                    <h1 class="single_headline">{{$article->title}}</h1>
-                    <p class="author">Von {{$article->author}}</p>
-                    <p class="ressort">{{$article->ressort}}</p>
+                    <h1 class="single_headline">{{$article->title ?? ''}}</h1>
+                    <p class="author">Von {{$article->author ?? ''}}</p>
+                    <p class="ressort">{{$article->ressort ?? ''}}</p>
                      <p class="created_at">
                         {{ optional($article->published_at)->diffForHumans() ?? 'Noch kein Datum' }}
                     </p>
@@ -18,7 +18,7 @@
                     <hr class="underline">
                 </div>
                 <div class="articleContent">
-                    <p class="desc">{{$article->description}}</p>
+                    <p class="desc">{{$article->description ?? ''}}</p>
                     <p class="content">
                         @php
                             $decoded = is_string($article->article_content)
