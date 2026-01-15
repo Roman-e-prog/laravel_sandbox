@@ -122,7 +122,7 @@ Route::get('/run-migrations', function () {
 });
 //for debugging in web
 Route::get('/debug', function () {
-    return 'debug reached';
+    return \App\Models\Blogarticle::count();
 });
 Route::get('/debug-migrations', function () { return \DB::table('migrations')->get(); });
 
