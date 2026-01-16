@@ -3,8 +3,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\BlogArticle;
-use App\Models\BlogArticleImages;
+use App\Models\Blogarticle;
+use App\Models\BlogarticleImages;
 class BlogArticleController extends Controller
 {
     //show articles
@@ -18,7 +18,7 @@ class BlogArticleController extends Controller
     }
     //show detail article
     public function showArticleDetail($id){
-        $article = BlogArticle::with([
+        $article = Blogarticle::with([
             'images'
         ])->findOrFail($id);
         $article->increment('views');
