@@ -101,8 +101,8 @@ Route::prefix('forumanswer')->name('forumanswer.')->group(function () {
 Route::prefix('blogarticle')->name('blogarticle.')->group(function () {
     
      //show all
-    Route::get('/blogArticles', [BlogArticleController::class, 'showArticles'])
-        ->name('showArticles');
+    // Route::get('/blogArticles', [BlogArticleController::class, 'showArticles'])
+    //     ->name('showArticles');
         //show one
     Route::get('/{id}', [BlogArticleController::class, 'showArticleDetail'])
         ->name('article_detail');
