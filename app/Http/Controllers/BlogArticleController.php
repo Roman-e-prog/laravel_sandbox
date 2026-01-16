@@ -9,7 +9,7 @@ class BlogArticleController extends Controller
 {
     //show articles
     public function showArticles(){
-        $articles = BlogArticle::all();
+        $articles = Blogarticle::all();
 
         return view('blogarticles', [
             'articles'=> $articles
